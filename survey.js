@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const rating = document.getElementById("rating");
 
-  const rating = document.getElementById('rating');
-
-  rating.addEventListener('input', () => clearError('ratingError'));
-
+  rating.addEventListener("input", () => clearError("ratingError"));
 });
 
 function clearError(errorId) {
@@ -16,14 +14,17 @@ function validateForm() {
   const rate = document.getElementById("rate").value;
   const feedback = document.getElementById("feedback").value;
   const email = document.getElementById("email").value;
+  const age = document.getElementById("age").value;
 
   const ratingError = document.getElementById("ratingError");
   const feedbackError = document.getElementById("feedbackError");
   const emailError = document.getElementById("emailError");
+  const ageError = document.getElementById("ageError");
 
   ratingError.textContent = "";
   feedbackError.textContent = "";
   emailError.textContent = "";
+  ageError.textContent = "";
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
@@ -40,6 +41,15 @@ function validateForm() {
   if (rate < 1 || rate > 5) {
     ratingError.textContent = "Rating is required and must be between 1 and 5.";
     valid = false;
+  }
+
+  if (!age) {
+    ageError.textContent = "Age is required";
+  } else {
+    if (age < 18 || age > 100) {
+      ageError.textContent = `${age} is not valid.\ Age must be between 18 and 100.`;
+      valid = false;
+    }
   }
 
   return valid;
