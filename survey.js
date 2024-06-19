@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("email").addEventListener("input", clearEmailError);
   document.getElementById("surveyDate").addEventListener("input", () => clearError("surveyDateError"));
 
+  document.getElementById("age").addEventListener("input", clearAgeError);
   const rating = document.getElementById("rating");
 
   rating.addEventListener("input", () => clearError("ratingError"));
@@ -48,6 +49,13 @@ function clearEmailError() {
   }
 }
 
+function clearAgeError() {
+  const age = document.getElementById("age").value;
+  if (age >= 18 && age <= 100) {
+    clearError("ageError");
+  }
+}
+
 function validateForm(e) {
   let valid = true;
 
@@ -55,15 +63,18 @@ function validateForm(e) {
   const feedback = document.getElementById("feedback").value;
   const email = document.getElementById("email").value;
   const date = document.getElementById("surveyDate").value;
+  const age = document.getElementById("age").value;
 
   const ratingError = document.getElementById("ratingError");
   const feedbackError = document.getElementById("feedbackError");
   const emailError = document.getElementById("emailError");
   const dateError = document.getElementById("surveyDateError");
+  const ageError = document.getElementById("ageError");
 
   ratingError.textContent = "";
   feedbackError.textContent = "";
   emailError.textContent = "";
+  ageError.textContent = "";
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
@@ -88,7 +99,16 @@ function validateForm(e) {
     dateError.textContent = "Date is required and must be in the format DD-MM-YYYY.";
     valid = false;
   }
-   
+
+  if (!age) {
+    ageError.textContent = "Age is required";
+  } else {
+    if (age < 18 || age > 100) {
+      ageError.textContent = `${age} is not valid.\ Age must be between 18 and 100.`;
+      valid = false;
+    }
+  }
+
   return valid;
 }
 
