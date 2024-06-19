@@ -1,7 +1,30 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  background: linear-gradient(rgba(62, 112, 142, 1), rgba(100, 150, 155, 1));
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
 }
+
+form {
+  background-color: white;
+  /* padding: 20px; */
+  margin: 0 30px;
+  justify-content: center;
+}
+.title {
+  color: rgba(78, 117, 119, 1);
+  justify-self: center;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
