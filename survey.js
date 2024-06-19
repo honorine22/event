@@ -1,4 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {});
+document.addEventListener("DOMContentLoaded", () => {
+
+  const rating = document.getElementById('rating');
+
+  rating.addEventListener('input', () => clearError('ratingError'));
+
+});
 
 function clearError(errorId) {
   document.getElementById(errorId).textContent = "";
