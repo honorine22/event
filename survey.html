@@ -7,27 +7,100 @@
     <link rel="stylesheet" href="survey.css" />
   </head>
   <body>
-    <form id="surveyForm" onsubmit="return validateForm()">
-      <h1 class="title">Online Survey Form</h1>
-      <p>
-        This is a survey being run by Kreativ company to evaluate the newly
-        launched MOTIONS website. Therefore, your responses will be highly
-        appreciated and it will help us improve the delivery of services on
-        behalf of MOTIONS. Thank you!
-      </p>
+    <div class="container-big">
+      <div class="container">
+        <h1>Kreativ</h1>
+        <h2>Online Survey Form</h2>
+        <p>
+          This is a survey being run by Kreativ company to evaluate the newly
+          launched MOTIONS website. Therefore, your responses will be highly
+          appreciated and it will help us improve the delivery of services on
+          behalf of MOTIONS. Thank you!
+        </p>
+        <form id="surveyForm" onsubmit="return validateForm()">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Ade Tiger" />
 
-      <div class="form-group">
-        <label for="feedback">Feedback (no special characters):</label>
-        <textarea id="feedback" name="feedback"></textarea>
-        <p class="error" id="feedbackError"></p>
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="yourname@gmail.com"
+          />
+          <p class="error" id="emailError"></p>
+
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="1" />
+
+          <label
+            >Have you ever purchased a product or service from our
+            website?</label
+          >
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="purchased" value="yes" /> Yes</label
+            >
+            <label><input type="radio" name="purchased" value="no" /> No</label>
+          </div>
+
+          <label>How did you hear about our website?</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="hear_about" value="television" />
+              Television</label
+            >
+            <label
+              ><input type="radio" name="hear_about" value="radio" />
+              Radio</label
+            >
+            <label
+              ><input type="radio" name="hear_about" value="newspaper" />
+              Newspaper</label
+            >
+            <label
+              ><input type="radio" name="hear_about" value="magazine" />
+              Magazine</label
+            >
+            <label
+              ><input type="radio" name="hear_about" value="word_of_mouth" />
+              Word-of-mouth</label
+            >
+            <label
+              ><input type="radio" name="hear_about" value="internet" />
+              Internet</label
+            >
+            <label
+              ><input type="radio" name="hear_about" value="others" /> Others
+              (Please Specify)</label
+            >
+          </div>
+
+          <label for="rate">Rating (1-5):</label>
+          <input type="number" id="rate" name="rate" min="1" max="5" />
+          <p class="error" id="ratingError"></p>
+
+          <label for="feedback">Feedback (no special characters):</label>
+          <textarea
+            id="feedback"
+            name="feedback"
+            placeholder="Enter anything you would like to say about our website"
+          ></textarea>
+          <p class="error" id="feedbackError"></p>
+
+          <label for="surveyDate">Survey Date (DD-MM-YYYY):</label>
+          <input
+            type="text"
+            id="surveyDate"
+            name="surveyDate"
+            pattern="\d{2}-\d{2}-\d{4}"
+          />
+          <p class="error" id="surveyDateError"></p>
+
+          <button type="submit">Submit The Survey</button>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="rating">Rating (1-5):</label>
-        <input type="number" id="rating" name="rating" min="1" max="5" />
-        <p class="error" id="ratingError"></p>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    </div>
     <script src="survey.js"></script>
   </body>
 </html>

@@ -1,44 +1,94 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(rgba(62, 112, 142, 1), rgba(100, 150, 155, 1));
   background-attachment: fixed;
+}
+.container-big {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
+  margin: 60px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  color: #555;
+  font-size: 14px;
 }
 
 form {
-  background-color: white;
-  /* padding: 20px; */
-  margin: 0 30px;
-  justify-content: center;
-}
-.title {
-  color: rgba(78, 117, 119, 1);
-  justify-self: center;
+  display: flex;
+  flex-direction: column;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-.form-group label {
-  display: block;
+label {
+  margin-top: 10px;
   margin-bottom: 5px;
+  color: #333;
 }
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 }
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
 .error {
   color: red;
-  font-size: 0.9em;
+  font-size: 0.875rem;
+  text-align: left; /* Ensure errors are left-aligned */
 }
