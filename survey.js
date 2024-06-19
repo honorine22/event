@@ -1,7 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {});
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("rate").addEventListener("input", clearRatingError);
+  document
+    .getElementById("feedback")
+    .addEventListener("input", clearFeedbackError);
+  document.getElementById("email").addEventListener("input", clearEmailError);
+});
 
 function clearError(errorId) {
   document.getElementById(errorId).textContent = "";
+}
+
+function clearRatingError() {
+  const rate = document.getElementById("rate").value;
+  const ratingError = document.getElementById("ratingError");
+  if (rate >= 1 && rate <= 5) {
+    clearError("ratingError");
+  }
+}
+
+function clearFeedbackError() {
+  const feedback = document.getElementById("feedback").value;
+  const feedbackError = document.getElementById("feedbackError");
+  const feedbackPattern = /^[a-zA-Z0-9\s]+$/;
+  if (feedbackPattern.test(feedback)) {
+    clearError("feedbackError");
+  }
+}
+
+function clearEmailError() {
+  const email = document.getElementById("email").value;
+  const emailError = document.getElementById("emailError");
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (emailPattern.test(email)) {
+    clearError("emailError");
+  }
 }
 
 function validateForm() {
@@ -21,13 +53,14 @@ function validateForm() {
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
-    emailError.textContent = "Email is required.";
+    emailError.textContent = "Invalid email address.";
     valid = false;
   }
 
   const feedbackPattern = /^[a-zA-Z0-9\s]+$/;
   if (!feedbackPattern.test(feedback)) {
-    feedbackError.textContent = "Feedback is required.";
+    feedbackError.textContent =
+      "Feedback can only contain letters, numbers, and spaces.";
     valid = false;
   }
 
