@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
     .getElementById("feedback")
     .addEventListener("input", clearFeedbackError);
   document.getElementById("email").addEventListener("input", clearEmailError);
+
+  const rating = document.getElementById("rating");
+
+  rating.addEventListener("input", () => clearError("ratingError"));
 });
 
 function clearError(errorId) {
