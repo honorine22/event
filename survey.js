@@ -46,12 +46,12 @@ function validateForm() {
   const rate = document.getElementById("rate").value;
   const feedback = document.getElementById("feedback").value;
   const email = document.getElementById("email").value;
-  const date = document.getElementById("date").value;
+  const date = document.getElementById("surveyDate").value;
 
   const ratingError = document.getElementById("ratingError");
   const feedbackError = document.getElementById("feedbackError");
   const emailError = document.getElementById("emailError");
-  const dateError = document.getElementById("dateError");
+  const dateError = document.getElementById("surveyDateError");
 
   ratingError.textContent = "";
   feedbackError.textContent = "";
@@ -80,7 +80,7 @@ function validateForm() {
     dateError.textContent = "Date is required and must be in the format YYYY-MM-DD.";
     valid = false;
   }
-  
+
 
 
   return valid;
