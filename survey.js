@@ -46,10 +46,12 @@ function validateForm() {
   const rate = document.getElementById("rate").value;
   const feedback = document.getElementById("feedback").value;
   const email = document.getElementById("email").value;
+  const date = document.getElementById("date").value;
 
   const ratingError = document.getElementById("ratingError");
   const feedbackError = document.getElementById("feedbackError");
   const emailError = document.getElementById("emailError");
+  const dateError = document.getElementById("dateError");
 
   ratingError.textContent = "";
   feedbackError.textContent = "";
@@ -72,6 +74,14 @@ function validateForm() {
     ratingError.textContent = "Rating is required and must be between 1 and 5.";
     valid = false;
   }
+
+  const datePattern = /^(?:(?:19|20)\d{2})-(?:(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01]))|(?:(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30))|(?:02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:02-29))$/
+  if (!datePattern.test(date)) {
+    dateError.textContent = "Date is required and must be in the format YYYY-MM-DD.";
+    valid = false;
+  }
+  
+
 
   return valid;
 }
