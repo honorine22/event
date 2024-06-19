@@ -1,9 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  document.getElementById("surveyForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    handleSumitt(event);
+  });
+
+
   document.getElementById("rate").addEventListener("input", clearRatingError);
   document
     .getElementById("feedback")
     .addEventListener("input", clearFeedbackError);
   document.getElementById("email").addEventListener("input", clearEmailError);
+  document.getElementById("surveyDate").addEventListener("input", () => clearError("surveyDateError"));
 
   const rating = document.getElementById("rating");
 
@@ -40,7 +48,7 @@ function clearEmailError() {
   }
 }
 
-function validateForm() {
+function validateForm(e) {
   let valid = true;
 
   const rate = document.getElementById("rate").value;
@@ -75,13 +83,19 @@ function validateForm() {
     valid = false;
   }
 
-  const datePattern = /^(?:(?:19|20)\d{2})-(?:(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01]))|(?:(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30))|(?:02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:02-29))$/
+  const datePattern = /^\d{2}-\d{2}-\d{4}$/;
   if (!datePattern.test(date)) {
-    dateError.textContent = "Date is required and must be in the format YYYY-MM-DD.";
+    dateError.textContent = "Date is required and must be in the format DD-MM-YYYY.";
     valid = false;
   }
-
-
-
+   
   return valid;
+}
+
+
+function handleSumitt(e){
+  e.preventDefault();
+  if(validateForm()){
+    alert("Form submitted successfully!");
+  }
 }
