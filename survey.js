@@ -100,8 +100,6 @@ function validateForm(e) {
       valid = false;
     }
   }
-
-
   if (!rate) {
     ratingError.textContent = "Rating is required.";
     valid = false;
