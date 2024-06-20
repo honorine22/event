@@ -79,7 +79,7 @@ function validateForm(e) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email) {
     emailError.textContent = "Email is required.";
-
+valid=false;
   }
   if (!emailPattern.test(email)) {
     emailError.textContent = "Invalid email address.";
@@ -89,6 +89,7 @@ function validateForm(e) {
   const feedbackPattern = /^[a-zA-Z0-9\s]+$/;
   if (!feedback) {
     feedbackError.textContent = "Feedback is required";
+    valid=false;
   }
   else {
     if (!feedbackPattern.test(feedback)) {
@@ -112,7 +113,7 @@ function validateForm(e) {
 
   if (!date) {
     dateError.textContent = "Date  is required.";
-
+valid=false;
   }
   else {
     if (!datePattern.test(date)) {
