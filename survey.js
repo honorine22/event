@@ -108,14 +108,14 @@ function validateForm(e) {
   }
  }
 
-  const datePattern = /^\d{2}-\d{2}-\d{4}$/;
+  const datePattern = /^(?:(?:0[1-9]|[12][0-9]|3[01])-(?:0[1-9]|1[0-2])-(?:19|20)\d{2})$/;
 
   if(!date){
     dateError.textContent = "Date  is required.";
 
   }
   else {if (!datePattern.test(date)) {
-    dateError.textContent = "Date must be in the format DD-MM-YYYY.";
+    dateError.textContent = "Date must be in the format DD-MM-YYYY and also valid";
     valid = false;
   }
 }
