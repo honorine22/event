@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  document.getElementById("surveyForm").addEventListener("submit", function(event){
+  document.getElementById("surveyForm").addEventListener("submit", function (event) {
     event.preventDefault();
     handleSubmit(event);
   });
@@ -77,7 +77,7 @@ function validateForm(e) {
   ageError.textContent = "";
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if(!email){
+  if (!email) {
     emailError.textContent = "Email is required.";
 
   }
@@ -87,15 +87,15 @@ function validateForm(e) {
   }
 
   const feedbackPattern = /^[a-zA-Z0-9\s]+$/;
-  if(!feedback){
+  if (!feedback) {
     feedbackError.textContent = "Feedback is required";
   }
- else{
-  if (!feedbackPattern.test(feedback)) {
-    feedbackError.textContent =
-      "Feedback can only contain letters, numbers, and spaces.";
-    valid = false;
-  }
+  else {
+    if (!feedbackPattern.test(feedback)) {
+      feedbackError.textContent =
+        "Feedback can only contain letters, numbers, and spaces.";
+      valid = false;
+    }
   }
 
   if (!rate) {
@@ -114,18 +114,13 @@ function validateForm(e) {
     dateError.textContent = "Date  is required.";
 
   }
-  else {if (!datePattern.test(date)) {
-    dateError.textContent = "Date must be in the format DD-MM-YYYY and also valid";
-    valid = false;
-  }
-}
-    valid = false;
-  } else {
+  else {
     if (!datePattern.test(date)) {
-      dateError.textContent = "Date must be in the format DD-MM-YYYY.";
+      dateError.textContent = "Date must be in the format DD-MM-YYYY and also valid";
       valid = false;
     }
   }
+
 
   if (!age) {
     ageError.textContent = "Age is required";
