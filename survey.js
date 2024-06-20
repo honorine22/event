@@ -101,16 +101,6 @@ function validateForm(e) {
     }
   }
 
-  if (!rate) {
-    ratingError.textContent = "Rating is required.";
-    valid = false;
-  } else {
-    if (rate < 1 || rate > 5) {
-      ratingError.textContent = "Rating must be between 1 and 5.";
-      valid = false;
-    }
-  }
-
   const datePattern = /^\d{2}-\d{2}-\d{4}$/;
 
   if (!date) {
