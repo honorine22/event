@@ -1,17 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-  document.getElementById("surveyForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    handleSubmit(event);
-  });
-
+  document
+    .getElementById("surveyForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      handleSubmit(event);
+    });
 
   document.getElementById("rate").addEventListener("input", clearRatingError);
   document
     .getElementById("feedback")
     .addEventListener("input", clearFeedbackError);
   document.getElementById("email").addEventListener("input", clearEmailError);
-  document.getElementById("surveyDate").addEventListener("input", () => clearError("surveyDateError"));
+  document
+    .getElementById("surveyDate")
+    .addEventListener("input", () => clearError("surveyDateError"));
 
   document.getElementById("age").addEventListener("input", clearAgeError);
   const rating = document.getElementById("rating");
@@ -79,18 +81,19 @@ function validateForm(e) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email) {
     emailError.textContent = "Email is required.";
-
-  }
-  if (!emailPattern.test(email)) {
-    emailError.textContent = "Invalid email address.";
     valid = false;
+  } else {
+    if (!emailPattern.test(email)) {
+      emailError.textContent = "Invalid email address.";
+      valid = false;
+    }
   }
 
   const feedbackPattern = /^[a-zA-Z0-9\s]+$/;
   if (!feedback) {
     feedbackError.textContent = "Feedback is required";
-  }
-  else {
+    valid = false;
+  } else {
     if (!feedbackPattern.test(feedback)) {
       feedbackError.textContent =
         "Feedback can only contain letters, numbers, and spaces.";
@@ -108,19 +111,17 @@ function validateForm(e) {
     }
   }
 
-  const datePattern = /^(?:(?:0[1-9]|[12][0-9]|3[01])-(?:0[1-9]|1[0-2])-(?:19|20)\d{2})$/;
+  const datePattern = /^\d{2}-\d{2}-\d{4}$/;
 
   if (!date) {
     dateError.textContent = "Date  is required.";
-
-  }
-  else {
+    valid = false;
+  } else {
     if (!datePattern.test(date)) {
-      dateError.textContent = "Date must be in the format DD-MM-YYYY and also valid";
+      dateError.textContent = "Date must be in the format DD-MM-YYYY.";
       valid = false;
     }
   }
-
 
   if (!age) {
     ageError.textContent = "Age is required";
