@@ -98,19 +98,19 @@ function validateForm(e) {
   }
   }
 
- if(!rate){
-  ratingError.textContent = "Rating is required.";
-
- }else{
-  if (rate < 1 || rate > 5) {
-    ratingError.textContent = "Rating must be between 1 and 5.";
+  if (!rate) {
+    ratingError.textContent = "Rating is required.";
     valid = false;
+  } else {
+    if (rate < 1 || rate > 5) {
+      ratingError.textContent = "Rating must be between 1 and 5.";
+      valid = false;
+    }
   }
- }
 
   const datePattern = /^(?:(?:0[1-9]|[12][0-9]|3[01])-(?:0[1-9]|1[0-2])-(?:19|20)\d{2})$/;
 
-  if(!date){
+  if (!date) {
     dateError.textContent = "Date  is required.";
 
   }
@@ -119,9 +119,17 @@ function validateForm(e) {
     valid = false;
   }
 }
+    valid = false;
+  } else {
+    if (!datePattern.test(date)) {
+      dateError.textContent = "Date must be in the format DD-MM-YYYY.";
+      valid = false;
+    }
+  }
 
   if (!age) {
     ageError.textContent = "Age is required";
+    valid = false;
   } else {
     if (age < 18 || age > 100) {
       ageError.textContent = `${age} is not valid.\ Age must be between 18 and 100.`;
@@ -132,10 +140,9 @@ function validateForm(e) {
   return valid;
 }
 
-
-function handleSubmit(e){
+function handleSubmit(e) {
   e.preventDefault();
-  if(validateForm()){
+  if (validateForm()) {
     alert("Form submitted successfully!");
   }
 }
